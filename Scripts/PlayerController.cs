@@ -131,7 +131,8 @@ namespace TarodevController
         {
             if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) _endedJumpEarly = true;
 
-            if (!_jumpToConsume && !HasBufferedJump) return;
+            if (!_jumpToConsume || !HasBufferedJump) return;    //this means player not pressed jump and not in buffer time 
+                                                                // so we can't jump
 
             if (_grounded || CanUseCoyote) ExecuteJump();
 
